@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 概率-Part1 | 概率论与数理统计学习笔记</title>
+  <meta name="description" content="最初看到 elegantbook 做的书籍样式很漂亮，就想把它引入到 bookdown 中，遂定制了此模版。在此基础上，做了迁移和扩展的工作，融合了 LaTeX (精美)、Pandoc (简洁) 和 R (强大) 的特性。This is a bookdown template based on ElegantBook. The output format for this template is bookdown::gitbook and bookdown::pdf_book." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 概率-Part1 | 概率论与数理统计学习笔记" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="最初看到 elegantbook 做的书籍样式很漂亮，就想把它引入到 bookdown 中，遂定制了此模版。在此基础上，做了迁移和扩展的工作，融合了 LaTeX (精美)、Pandoc (简洁) 和 R (强大) 的特性。This is a bookdown template based on ElegantBook. The output format for this template is bookdown::gitbook and bookdown::pdf_book." />
+  <meta name="github-repo" content="XiangyunHuang/ElegantBookdown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 概率-Part1 | 概率论与数理统计学习笔记" />
+  
+  <meta name="twitter:description" content="最初看到 elegantbook 做的书籍样式很漂亮，就想把它引入到 bookdown 中，遂定制了此模版。在此基础上，做了迁移和扩展的工作，融合了 LaTeX (精美)、Pandoc (简洁) 和 R (强大) 的特性。This is a bookdown template based on ElegantBook. The output format for this template is bookdown::gitbook and bookdown::pdf_book." />
+  
+
+<meta name="author" content="李凯" />
+
+
+<meta name="date" content="2022-04-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="1-event.html"/>
+<link rel="next" href="3-probability-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        Macros: {
+          bm: ["{\\boldsymbol #1}",1],
+        },
+        extensions: ["cancel.js"]
+      }
+    });
+</script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Elegant Bookdown Template</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#简介" id="toc-简介">简介<span></span></a></li>
+<li><a href="index.html#自定义-block" id="toc-自定义-block">自定义 block<span></span></a></li>
+<li><a href="1-event.html#chapter:event" id="toc-chapter:event"><span class="toc-section-number">1</span> 事件<span></span></a>
+<ul>
+<li><a href="1-event.html#sec:set" id="toc-sec:set"><span class="toc-section-number">1.1</span> 样本空间和事件的集合表示<span></span></a></li>
+<li><a href="1-event.html#sec:relationship" id="toc-sec:relationship"><span class="toc-section-number">1.2</span> 事件间的关系<span></span></a></li>
+</ul></li>
+<li><a href="2-probability-1.html#chapter:probability-1" id="toc-chapter:probability-1"><span class="toc-section-number">2</span> 概率-Part1<span></span></a>
+<ul>
+<li><a href="2-probability-1.html#sec:prob" id="toc-sec:prob"><span class="toc-section-number">2.1</span> 事件的概率<span></span></a>
+<ul>
+<li><a href="2-probability-1.html#古典概率模型" id="toc-古典概率模型"><span class="toc-section-number">2.1.1</span> 古典概率模型<span></span></a></li>
+<li><a href="2-probability-1.html#排列组合" id="toc-排列组合"><span class="toc-section-number">2.1.2</span> 排列组合<span></span></a></li>
+<li><a href="2-probability-1.html#sec:P" id="toc-sec:P"><span class="toc-section-number">2.1.3</span> 排列<span></span></a></li>
+</ul></li>
+<li><a href="2-probability-1.html#sec:freq-prob" id="toc-sec:freq-prob"><span class="toc-section-number">2.2</span> 频率与概率<span></span></a></li>
+<li><a href="2-probability-1.html#sec:axiomatic" id="toc-sec:axiomatic"><span class="toc-section-number">2.3</span> 公理化<span></span></a></li>
+<li><a href="2-probability-1.html#sec:conditional-prob" id="toc-sec:conditional-prob"><span class="toc-section-number">2.4</span> 条件概率<span></span></a>
+<ul>
+<li><a href="2-probability-1.html#乘法公式" id="toc-乘法公式"><span class="toc-section-number">2.4.1</span> 乘法公式<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="3-probability-2.html#chapter:probability-2" id="toc-chapter:probability-2"><span class="toc-section-number">3</span> 概率-Part2<span></span></a>
+<ul>
+<li><a href="3-probability-2.html#全概率公式" id="toc-全概率公式"><span class="toc-section-number">3.1</span> 全概率公式<span></span></a></li>
+<li><a href="3-probability-2.html#贝叶斯公式" id="toc-贝叶斯公式"><span class="toc-section-number">3.2</span> 贝叶斯公式<span></span></a></li>
+<li><a href="3-probability-2.html#事件的独立性" id="toc-事件的独立性"><span class="toc-section-number">3.3</span> 事件的独立性<span></span></a></li>
+<li><a href="3-probability-2.html#伯努利模型" id="toc-伯努利模型"><span class="toc-section-number">3.4</span> 伯努利模型<span></span></a></li>
+</ul></li>
+<li><a href="4-distribution-function.html#chapter:distribution-function" id="toc-chapter:distribution-function"><span class="toc-section-number">4</span> 分布函数<span></span></a>
+<ul>
+<li><a href="4-distribution-function.html#随机变量" id="toc-随机变量"><span class="toc-section-number">4.1</span> 随机变量<span></span></a>
+<ul>
+<li><a href="4-distribution-function.html#随机变量概念" id="toc-随机变量概念"><span class="toc-section-number">4.1.1</span> 随机变量概念<span></span></a></li>
+</ul></li>
+<li><a href="4-distribution-function.html#分布函数" id="toc-分布函数"><span class="toc-section-number">4.2</span> 分布函数<span></span></a>
+<ul>
+<li><a href="4-distribution-function.html#几何分布" id="toc-几何分布"><span class="toc-section-number">4.2.1</span> 几何分布<span></span></a></li>
+<li><a href="4-distribution-function.html#sec:binomial-distr" id="toc-sec:binomial-distr"><span class="toc-section-number">4.2.2</span> 二项分布<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="5-expectation-variance.html#chapter:expectation" id="toc-chapter:expectation"><span class="toc-section-number">5</span> 数学期望<span></span></a></li>
+<li><a href="6-large-numbers-central-limit.html#chapter:law-of-large-numbers-central-limit" id="toc-chapter:law-of-large-numbers-central-limit"><span class="toc-section-number">6</span> 大数定律和中心极限定理<span></span></a></li>
+<li><a href="7-population-sample.html#chapter:population-sample" id="toc-chapter:population-sample"><span class="toc-section-number">7</span> 总体与样本<span></span></a></li>
+<li><a href="8-parameter-estimation.html#chapter:parameter-estimation" id="toc-chapter:parameter-estimation"><span class="toc-section-number">8</span> 参数估计<span></span></a></li>
+<li><a href="9-hypothesis-testing.html#chapter:hypothesis-testing" id="toc-chapter:hypothesis-testing"><span class="toc-section-number">9</span> 假设检验<span></span></a></li>
+<li><a href="#appendix" id="toc-appendix">(APPENDIX) 附录<span></span></a></li>
+<li><a href="11-appendix.html#附录" id="toc-附录"><span class="toc-section-number">10</span> 附录<span></span></a></li>
+<li><a href="10-references.html#References.unnumbered" id="toc-References.unnumbered"><span class="toc-section-number">11</span> 参考文献<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">概率论与数理统计学习笔记</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter:probability-1" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">第 2 章</span> 概率-Part1<a href="2-probability-1.html#chapter:probability-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="sec:prob" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 事件的概率<a href="2-probability-1.html#sec:prob" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="古典概率模型" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 古典概率模型<a href="2-probability-1.html#古典概率模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>古典概率模型需要满足的条件：</p>
+<ul>
+<li>样本空间中有有限个样本点。</li>
+<li>所有的样本点出现的可能性相同-等可能性。</li>
+</ul>
+</div>
+<div id="排列组合" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> 排列组合<a href="2-probability-1.html#排列组合" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>加法原理：几类方案。乘法原理：一个方案分几步。</li>
+</ol>
+</div>
+<div id="sec:P" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 排列<a href="2-probability-1.html#sec:P" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>不重复排列，从n个不同元素中取出m个不同的排列的个数：</li>
+</ol>
+<p><span class="math display" id="eq:permutation">\[
+\begin{align}
+   P_n^m=n(n-1)(n-2)...(n-m+1)=\frac{n!}{(n-m)!}
+   \tag{2.1}
+\end{align}
+\]</span></p>
+<div class="rmdnote">
+<p>全排列。<span class="math inline">\(0! =1\)</span>。</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>重复排列，从n个不同元素中取出m个排列（可以相同）的个数，为<span class="math inline">\(n^m\)</span>。</p></li>
+<li><p>组合，从n个不同元素中取出m个个不同的元素（不用排队）。</p></li>
+</ol>
+<p><span class="math display" id="eq:combination">\[
+\begin{align}
+   C_n^m&amp;=\frac{P_n^m}{m!}=\frac{n!}{m!(n-m)!} \\
+   C_n^m&amp;=C_n^{n-m} \\
+   C_n^0&amp;=C_n^n=1
+   \tag{2.2}
+\end{align}
+\]</span></p>
+</div>
+</div>
+<div id="sec:freq-prob" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 频率与概率<a href="2-probability-1.html#sec:freq-prob" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>n次试验，事件A发生了m次，则A发生的频率为<span class="math inline">\(\frac{m}{n}\)</span>，使用<span class="math inline">\(\omega_n(m)\)</span>表示。</p>
+<ul>
+<li>性质1：非负性，<span class="math inline">\(0\leq\omega_n(m)\leq1\)</span></li>
+<li>性质2：规范性，<span class="math inline">\(\omega_n(\Omega)=1\)</span>，<span class="math inline">\(\omega_n(\Phi)=0\)</span></li>
+<li>性质3：可加性，两两互不相容事件集的频率等于每个事件频率之和。</li>
+</ul></li>
+<li><p>频率的稳定值无限接近于统计概率。</p></li>
+</ol>
+</div>
+<div id="sec:axiomatic" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 公理化<a href="2-probability-1.html#sec:axiomatic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="rmdnote">
+<ul>
+<li><p>公理1：非负性</p></li>
+<li><p>公理2：规范性</p></li>
+<li><p>公理3：完全可加性，事件<span class="math inline">\(A_1,A_2,...\)</span>不相容，则<span class="math inline">\(P(A_1+A_2+...)=P(A_1)+P(A_2)+...\)</span>。<em>事件相加的概率等于事件概率的相加。</em></p></li>
+</ul>
+</div>
+<div class="rmdtip">
+<ul>
+<li><p>性质1：<span class="math inline">\(P(\Phi)=0\)</span>。</p></li>
+<li><p>性质2：有限可加性，事件<span class="math inline">\(A_1,A_2,...,A_n\)</span>不相容，则<span class="math inline">\(P(A_1+A_2+...+A_n)=P(A_1)+P(A_2)+...P(A_n)\)</span></p></li>
+<li><p>性质3：<span class="math inline">\(P(\bar{A})=1-P(A)\)</span></p></li>
+<li><p>性质4：</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li><span class="math inline">\(P(A-B)=P(A)-P(AB)\)</span></li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>如果<span class="math inline">\(A\supset B\)</span>，则<span class="math inline">\(P(A-B)=P(A)-P(B)，且P(A)\geq P(B)\)</span>。</li>
+</ol></li>
+</ul></li>
+<li><p><strong>性质5（重要）</strong>：加法公式，<span class="math inline">\(P(A+B)=P(A)+P(B)-P(AB)\)</span></p></li>
+</ul>
+</div>
+</div>
+<div id="sec:conditional-prob" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 条件概率<a href="2-probability-1.html#sec:conditional-prob" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>定义：<span class="math inline">\(\Omega\)</span>为样本空间，A、B为两个事件，<span class="math inline">\(P(B)&gt;0\)</span>，在B已经发生的条件下A发生的概率即为A对B的条件概率，记做<span class="math inline">\(P(A|B)\)</span>。计算公式为有如下几种：</li>
+</ol>
+<ul>
+<li>公式1：</li>
+</ul>
+<p><span class="math display" id="eq:con-prob-1">\[
+\begin{align}
+  P(A|B)=\frac{n_{AB}}{n_B}
+  \tag{2.3}
+\end{align}
+\]</span></p>
+<ul>
+<li>公式2：</li>
+</ul>
+<p><span class="math display" id="eq:con-prob-2">\[
+\begin{align}
+  P(A|B)=\frac{P(AB)}{P(B)}
+  \tag{2.4}
+\end{align}
+\]</span></p>
+<div class="rmdnote">
+<p>条件概率的样本空间发生了变化，从<span class="math inline">\(\Omega\)</span>变成了B</p>
+</div>
+<div id="乘法公式" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> 乘法公式<a href="2-probability-1.html#乘法公式" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>两个事件的乘法公式。</li>
+</ol>
+<p><span class="math display" id="eq:n-multiplication-1">\[
+\begin{align}
+  P(AB)&amp;=P(B)P(A|B) \\
+  P(AB)&amp;=P(A)P(B|A)
+  \tag{2.5}
+\end{align}
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>多个事件的乘法公式（三个事件）：</li>
+</ol>
+<p><span class="math display" id="eq:n-multiplication-2">\[
+\begin{align}
+  P(ABC)&amp;=P(A)P(B|A)P(C|AB)
+  \tag{2.6}
+\end{align}
+\]</span></p>
+<div class="rmdtip">
+<p>公式<a href="2-probability-1.html#eq:n-multiplication-2">(2.6)</a>可以通过按步骤进行的方式直观理解：</p>
+<p>步骤1：事件A发生，概率为P(A)。</p>
+<p>步骤2：事件A发生的前提下，事件B发生，概率为P(B|A)。</p>
+<p>步骤3：事件A、B同时发生的前提下，事件C发生，概率为P(C|AB)。</p>
+<p>步骤4：将以上三步的结果相乘，得到事件A、B、C同时发生的概率。</p>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="1-event.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-probability-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/XiangyunHuang/masr/edit/master/2-probability-1.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/XiangyunHuang/masr/blob/master/2-probability-1.Rmd",
+"text": "查看"
+},
+"download": ["elegantbookdown.pdf", "elegantbookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
